@@ -48,38 +48,8 @@ class Events
     */
    public static function onMessage($client_id, $message) {
         
-        $host = "http://new.qcshendeng.com/appapi/home";
-        //接收到信息后处理
-        $MsgArr =  json_decode($message,true);
-
-        
-
-        if( is_array($MsgArr) && $MsgArr['type'] = 'login' ){
-          //登录操作
-
-          $Events = new Events();
-          $token = $MsgArr['token'];
-          $uid = $MsgArr['uid'];
-          $url = $host."/user/EventsLogin?uid=".$uid."&client_id=".$client_id."&token=".$token;
-          $res = $Events->http_get($url);
-          $ret = json_decode($res,true);
-
-          //if( $ret['code'] == '0'){
-            //需要重新登录  已经在 userf发布
-              // $retrun['type'] = 'logout';
-              // $retrun['msg'] = $ret['msg'];
-              // //发送消息
-              // Gateway::sendToClient($ret['old_client_id'], json_encode($retrun) );
-              
-          // }else{
-          //   Gateway::sendToClient($client_id, json_encode($ret) );
-          // }
-          
-        }
-
-
         // 向所有人发送 
-        //Gateway::sendToAll("$client_id said $message");
+       Gateway::sendToAll("$client_id said $message");
    }
    
    /**
