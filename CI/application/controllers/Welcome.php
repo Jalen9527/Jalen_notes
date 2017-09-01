@@ -150,12 +150,11 @@ class Welcome extends MY_Controller {
 
 		if( IS_POST ){
 			
-			$this->form_validation->set_rules('user','用户名','required');
-			$this->form_validation->set_rules('pwd','密码','required');
-			$this->form_validation->set_rules('email','邮箱','required');
-			$this->form_validation->set_rules('email','邮箱','required');
+			// $this->form_validation->set_rules('user','用户名','required');
+			// $this->form_validation->set_rules('pwd','密码','required');
+			// $this->form_validation->set_rules('email','邮箱','valid_emails|required');
 
-			if ($this->form_validation->run())
+			if ($this->form_validation->run('signup'))
 	        {
 	            echo 'ok';
 	        }
