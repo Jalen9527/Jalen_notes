@@ -198,6 +198,40 @@ session类：
 
 
 
+表单集合类
+	
+	控制器文件：
+	$this->load->library('form_validation');  //加载表单验证类
+	$this->form_validation->set_rules('user','用户名','required');   //验证input 是user的值 , 第二个参数是提示,第三个参数是规则，可以多个
+	$this->form_validation->set_rules('pwd','密码','required');
+	$this->form_validation->set_rules('email','邮箱','valid_emails|required');
+	$this->form_validation->run()  //直接可以判断
+
+	模板文件:
+	<?php echo validation_errors(); ?>                   //显示所有验证不通过的消息
+
+	用户名：<input type="text" name="user" value="<?=set_value('user');?>">    //set_value('user');   获取的就是用户填充的数据
+	密码: <input type="password" name="pwd" value="<?=set_value('pwd');?>">
+	邮箱: <input type="email" name="email" value="<?=set_value('email');?>">
+
+	配置文件的方式：
+	application/config/ 目录下创建一个名为 form_validation.php 的文件。 然后在该文件中，将验证规则保存在数组 $config 中即可。
+
+	$config = array(
+    'signup' => array(
+        array(
+            'field' => 'username',
+            'label' => 'Username',
+            'rules' => 'required'
+        ),
+    ));
+
+    $this->form_validation->run('signup'); //参数里直接填写配置的规则集合名称就可以判断 非常方便
+
+
+
+
+
 
 
 
