@@ -1,0 +1,112 @@
+empty(); 是否为空      !empty();是否不为空
+isset(); 检测变量是否被设置    !isset();是否没被设置；
+defuned(); 检测常量是否被设置
+is_array(); 是否为数组
+in_array('字符串',$变量名); 是否在$变量中；
+implode("分割符号，例： ,",$变量名); 将数组分割成一组字符串 (通常在mysql in中使用)；
+explode()和上面的相反,组装成一个数组
+
+focus();获取焦点  js中使用;
+COUNT (数量 *为全部) mysql语句;
+UPDATE 表名 SET 列名=新的值 可多个  mysql语句;
+UNION ALL  可查询2个表 在查询语句后面添加  mysql语句;
+rand(min,max)  rand() 函数返回随机整数。
+uniqid(prefix,more_entropy)  函数基于以微秒计的当前时间，生成一个唯一的 ID。
+substr(字符串,start开始位置,length一共多长) 函数返回字符串的一部分。
+define(常量名，常量的数值，true为对大小写不敏感，不设置则为敏感)设置一个常量，常量在整个脚本中都可以使用
+
+include()包含            发生错误会继续执行
+require()包含文件        发生错误会停止执行
+
+require_one()包含文件，包含文件之前会检查一次是否已经包含过文件；
+__FILE__  获取文件当前的绝对路径
+dirname(__FILE__) 获取当前文件绝对路径的上一个目录
+
+HTML5    oninvalid="setCustomValidity('联系邮箱格式错误')" oninput="setCustomValidity('')"   验证的提示文字可修改
+HTML5    pattern="正则表达式验证 "
+HTML5    placeholder=" 为输入时候在文本框中显示的文字"
+HTML5    required="required" 这个为必填项目
+
+
+css 超出隐藏： overflow:hidden;text-overflow:ellipsis;white-space:nowrap; width: 多少px;
+
+限制输入框 只能输入数字
+onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  
+
+
+获取radio 的值
+var val=$('input:radio[name="sex"]:checked').val();
+
+手机百度地图的跳转
+http://map.baidu.com/mobile/?third_party=uri_api#place/list/qt=s&wd=地址&searchFlag=uri_api&c=131/showall=1&vt=map&i=0
+
+直接打开qq聊天窗口  http://wpa.qq.com/msgrd?v=3&uin=2685981434&site=qq&menu=yes
+
+str_replace(array("\r\n", "\r", "\n"), "<br>", $value['subject']);  替换换行符号
+
+用div写一个滚动条窗口：overflow：auto;//内容超出出现滚动条
+
+微信长按复制 user-select：text
+
+=================================================================================
+mysql:
+
+thinkphp  M()->getLastSql()  输出最后一次查询
+
+
+
+=====================================================================
+js:
+onclick="return confirm('确定删除用户？')"
+
+禁止输入中文字符：
+<input type="text" id="ceshi" onkeydown="check()" />
+<script type="text/javascript">
+function check(){
+  var  a = document.getElementById('ceshi').value;
+  if (/[\u4E00-\u9FA5]/i.test(a)) {
+     alert('请切换输入法为英文状态');
+    document.getElementById('ceshi').value = '';
+  }
+
+}
+</script>	  
+
+
+
+
+===============================================================================
+WP
+wordpress:
+	去掉谷歌:
+	2、全局替换，把googleapis 这个全局替换成useso就调用的360提供的接口了。
+	1、找到每个主题的 themes/主题名/functions.php 文件
+//禁用Open Sans
+class Disable_Google_Fonts {
+public function __construct() {
+add_filter( ‘gettext_with_context’, array( $this, ‘disable_open_sans’ ), 888, 4 );
+}
+public function disable_open_sans( $translations, $text, $context, $domain ) {
+if ( ‘Open Sans font: on or off’ == $context && ‘on’ == $text ) {
+$translations = ‘off’;
+}
+return $translations;
+}
+}
+$disable_google_fonts = new Disable_Google_Fonts;
+	或者
+function remove_open_sans_from_wp_core() {
+wp_deregister_style( ‘open-sans’ );
+wp_register_style( ‘open-sans’, false );
+wp_enqueue_style(‘open-sans’,”);
+}
+add_action( ‘init’, ‘remove_open_sans_from_wp_core’ );
+	
+	3、搜索插件 Disable Google Fonts 启用
+	
+
+
+
+
+
+
