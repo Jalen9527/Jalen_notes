@@ -21,10 +21,10 @@ function uploaded($filename){
 			return $file_src;
 			
 		}else{
-			adminmsg("文件太大或未选择文件",1);
+			echo "文件太大或未选择文件";exit();
 		}
 	}else{
-		adminmsg('抱歉！不支持此文件格式！',1);	
+		echo "抱歉！不支持此文件格式";exit();
 	}
 }
 
