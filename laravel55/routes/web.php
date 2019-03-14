@@ -16,15 +16,20 @@ Route::get('/', function () {
 });
 
 
-Route::get('test', function(){
+define("ADMINPATH",'/admin/');  //定义管理后台路径
 
-    echo phpinfo();
+//管理后台
+Route::get(ADMINPATH.'login','admin\LoginController@index');
+
+//需要验证权限的页面
+Route::middleware(['adminAuth'])->group(function () {
+
+    Route::get(ADMINPATH.'index','admin\IndexController@index');
+    Route::get(ADMINPATH.'adminUser','admin\AdminUserController@list');
+    Route::get(ADMINPATH.'user','admin\UserController@list');
+
 });
 
-$admin_path = '/admin/';
 
-
-Route::get('user/{userid?}', 'UserController@index');
-Route::get($admin_path.'login','admin\LoginController@index');
-Route::get($admin_path.'index','admin\IndexController@index');
-
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
