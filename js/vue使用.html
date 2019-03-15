@@ -1,0 +1,31 @@
+
+
+<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript">
+	//Vue
+		var url = '$url';
+		var joinUrl = "$joinUrl";
+		var vm = new Vue({
+		  el:'#back',
+		  data:{
+		  	cplist:{},
+		  	isJoin:false,  //是否有加入CP
+
+		  },
+		  created(){
+		    fetch( joinUrl ).then(function (res){
+		    	return res.json();
+		    }).then(function (stories){
+		       	console.log(stories)
+		       	if(stories.code == '1'){
+		       		this.isJoin = true;
+		       	}
+		    })
+		  	
+		  }
+
+		})
+
+
+		
+	</script>

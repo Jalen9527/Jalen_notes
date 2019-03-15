@@ -46,7 +46,7 @@
                     <div class="m-portlet__head-tools">
                         <ul class="m-portlet__nav">
                             <li class="m-portlet__nav-item">
-                                <a href="#" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air">
+                                <a href="{{url('add')}}" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air">
 						<span>
 							<i class="la la-plus"></i>
 							<span>新增</span>
@@ -72,13 +72,15 @@
                         </thead>
 
                         <tbody>
+
+                        @foreach ( $list as $item )
                         <tr>
-                            <td>1</td>
-                            <td>61715-075</td>
-                            <td>China</td>
-                            <td>Tieba</td>
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->username}}</td>
+                            <td>{{$item->created_at}}</td>
+                            <td>{{$item->updated_at}}</td>
                             <td>
-                                <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+                                <a href="{{url('edit',['id'=>$item->id])}}" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
 									<span>
 										<i class="la la-archive"></i>
 										<span><font id="WOW_TRANSLATE_476" class="WOW_TRANSLATE_STYLE" data--w-o-w_-i-n-d-e-x="476">编辑</font></span>
@@ -94,9 +96,17 @@
 
                             </td>
                         </tr>
+                        @endforeach
+
                         </tbody>
 
                     </table>
+
+
+                    {{$list->links('admin.common.page')}}
+
+
+
                 </div>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->                </div>

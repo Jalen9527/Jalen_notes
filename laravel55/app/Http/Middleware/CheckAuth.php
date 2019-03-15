@@ -18,7 +18,7 @@ class CheckAuth
     {
         // 执行动作
         // 1先检查后台管理是否登录，2检查是否有权限
-        
+
         $token = $request->input('token');
 //        dump('not have auth!');exit;
 
